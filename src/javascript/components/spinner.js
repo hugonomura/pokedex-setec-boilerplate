@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import emitter from 'js/emitter';
 
 class Spinner {
@@ -14,11 +13,6 @@ class Spinner {
 	bindListeners() {
 		emitter.on('spinner:show', this.onSpinnerShow.bind(this));
 		emitter.on('spinner:hide', this.onSpinnerHide.bind(this));
-
-
-		$('body').on('click', () => {
-			emitter.emit('spinner:show');
-		});
 	}
 
 	onSpinnerShow() {
@@ -32,4 +26,6 @@ class Spinner {
 
 export default ($element) => {
 	new Spinner($element).init();
-};
+}; // component loader
+
+export { Spinner }; // para usar nos testes
