@@ -39,6 +39,38 @@ describe('Spinner component',() => {
         expect(stub.calledOnce).to.be.true;
       });
     });
+
+    context('when spinner:hide event is triggered', () => {
+      it('calls #onSpinnerHide', () => {
+        const stub = sandbox.stub(instance, 'onSpinnerHide');
+
+        instance.bindListeners();
+        emitter.emit('spinner:hide');
+
+        expect(stub.calledOnce).to.be.true;
+      });
+    });
+  });
+
+  describe('#onSpinnerShow', () => {
+    it('displays the spinner', () => {
+      instance.onSpinnerShow();
+      const visibleClass = instance.spinnerVisibleClass;
+
+      const hasClass = instance.$element.hasClass(visibleClass);
+
+      expect(hasClass).to.be.true;
+    });
+  });
+
+  describe('#onSpinnerHide', () => {
+    it('displays the spinner', () => {
+      instance.onSpinnerHide();
+      const visibleClass = instance.spinnerVisibleClass;
+
+      const hasClass = instance.$element.hasClass(visibleClass);
+
+      expect(hasClass).to.be.false;
+    });
   });
 });
-// this element has clss(nome da class)
